@@ -1,4 +1,6 @@
 package com.basic.boards.repository
 
-interface UserRepository {
-}
+import com.basic.boards.domain.User
+import org.springframework.data.jpa.repository.JpaRepository
+
+interface UserRepository: JpaRepository<User, Long>
