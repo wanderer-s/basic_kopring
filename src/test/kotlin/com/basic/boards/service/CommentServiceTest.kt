@@ -6,7 +6,6 @@ import com.basic.boards.domain.User
 import com.basic.boards.repository.CommentRepository
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
-import io.kotest.matchers.shouldBe
 import io.mockk.every
 import io.mockk.mockk
 import jakarta.persistence.EntityNotFoundException
