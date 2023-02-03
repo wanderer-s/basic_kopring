@@ -9,8 +9,6 @@ import jakarta.persistence.OneToMany
 
 @Entity
 class Post(
-    id: Long,
-
     @Column(nullable = false)
     var title: String,
 
@@ -19,19 +17,15 @@ class Post(
 
     @ManyToOne()
     @JoinColumn(name = "user_id")
-    val author: User,
+    val author: User?,
 
-    @OneToMany(mappedBy = "post")
-    private val comments: List<Comment>,
+    @OneToMany(mappedBy = "post", orphanRemoval = true)
+    val comments: MutableList<Comment?> = mutableListOf(),
 
     @Column(nullable = false)
     var viewCount: Int = 0
 
 ): BaseEntity() {
-    fun commentsCount(): Int {
-        return this.comments.count()
-    }
-
     fun increaseViewCount() {
         this.viewCount++
     }
